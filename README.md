@@ -1,5 +1,7 @@
 # Mapping Networks 复现实验
 
+[English](README_EN.md) | 中文
+
 论文地址：[Mapping Networks](https://arxiv.org/abs/2602.19134)
 
 这个仓库是一个轻量 PyTorch 实验，用来验证 Mapping Networks 的核心想法：
