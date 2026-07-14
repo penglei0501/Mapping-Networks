@@ -1,0 +1,12 @@
+{
+  "run_name": "20260715_004429_mapping_lwt_cnn1_fmnist_z4078_seed42",
+  "best_epoch": 17,
+  "best_test_acc": 0.8451,
+  "paper_acc": 0.9483,
+  "gap_best_minus_paper": -0.10320000000000007,
+  "trainable_latent_params": 4078,
+  "trainable_loss_coefficients": 0,
+  "total_optimized_params": 4078,
+  "final_mapping_loss_coefficients": null,
+  "target_param_count": 537994
+}

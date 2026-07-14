@@ -1,0 +1,12 @@
+{
+  "run_name": "20260714_233137_mapping_slvt_cnn1_mnist_z1024_seed42",
+  "best_epoch": 45,
+  "best_test_acc": 0.9691,
+  "paper_acc": 0.9878,
+  "gap_best_minus_paper": -0.01870000000000005,
+  "trainable_latent_params": 1024,
+  "trainable_loss_coefficients": 0,
+  "total_optimized_params": 1024,
+  "final_mapping_loss_coefficients": null,
+  "target_param_count": 537994
+}
