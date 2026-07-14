@@ -613,6 +613,7 @@ class ChunkedFixedProjector(nn.Module):
         latent_init_std: float = 0.02,
         projection_init: str = "orthogonal",
         modulation_reduction: str = "sum",
+        projection_layout: str = "global",
     ):
         super().__init__()
 
@@ -625,13 +626,19 @@ class ChunkedFixedProjector(nn.Module):
         self.modulation_scale = float(modulation_scale)
         self.projection_init = projection_init
         self.modulation_reduction = modulation_reduction
+        self.projection_layout = projection_layout
+
+        if self.projection_layout not in {"global", "blockwise"}:
+            raise ValueError(
+                f"Unknown projection layout: {self.projection_layout}"
+            )
 
         self.z = nn.Parameter(
             torch.randn(self.latent_dim) * latent_init_std
         )
         # 对 CNN2 这种中小模型，直接缓存完整固定投影矩阵，可以大幅加速。
         # W 和 b 是 buffer，不是 Parameter，不会被训练。
-        W_cpu, b_cpu = self._make_chunk_cpu(0, self.out_dim)
+        W_cpu, b_cpu = self._make_projection_cpu()
 
         self.register_buffer(
             "cached_W",
@@ -649,8 +656,16 @@ class ChunkedFixedProjector(nn.Module):
         # scanning the large fixed matrix for every Mapping Loss batch.
         if self.activation == "identity" and self.projection_init == "orthogonal":
             column_norm_sq = torch.empty(0, dtype=torch.float32)
+            if self.projection_layout == "global":
+                orthogonal_rank = min(self.latent_dim, self.out_dim)
+            else:
+                orthogonal_rank = sum(
+                    min(self.latent_dim, end - start)
+                    for start in range(0, self.out_dim, self.chunk_size)
+                    for end in [min(start + self.chunk_size, self.out_dim)]
+                )
             frobenius_norm_sq = torch.tensor(
-                float(min(self.latent_dim, self.out_dim)),
+                float(orthogonal_rank),
                 dtype=torch.float32,
             )
         else:
@@ -676,7 +691,25 @@ class ChunkedFixedProjector(nn.Module):
             W_cpu.mean(dim=1),
             persistent=False,
         )
-                
+
+    def _make_projection_cpu(self) -> Tuple[Tensor, Tensor]:
+        if self.projection_layout == "global":
+            return self._make_chunk_cpu(0, self.out_dim)
+
+        W = torch.empty(
+            self.latent_dim,
+            self.out_dim,
+            dtype=torch.float32,
+        )
+        b = torch.empty(self.out_dim, dtype=torch.float32)
+
+        for start in range(0, self.out_dim, self.chunk_size):
+            end = min(start + self.chunk_size, self.out_dim)
+            W_chunk, b_chunk = self._make_chunk_cpu(start, end)
+            W[:, start:end].copy_(W_chunk)
+            b[start:end].copy_(b_chunk)
+
+        return W, b
 
     def _make_chunk_cpu(
         self,
@@ -891,6 +924,7 @@ class MappingCNN(nn.Module):
         parameter_scale_mode: str,
         layerwise_latent_dims: Optional[List[int]],
         layerwise_modulation_scales: Optional[List[float]],
+        projection_layout: str = "global",
     ):
         super().__init__()
 
@@ -920,6 +954,7 @@ class MappingCNN(nn.Module):
                 latent_init_std=latent_init_std,
                 projection_init=projection_init,
                 modulation_reduction=modulation_reduction,
+                projection_layout=projection_layout,
             )
 
         elif self.mode == "lwt":
@@ -976,6 +1011,7 @@ class MappingCNN(nn.Module):
                     latent_init_std=latent_init_std,
                     projection_init=projection_init,
                     modulation_reduction=modulation_reduction,
+                    projection_layout=projection_layout,
                 )
 
         else:
@@ -1355,6 +1391,7 @@ def validate_paper_protocol(args: argparse.Namespace) -> None:
 
     required_values = {
         "projection_init": "orthogonal",
+        "projection_layout": "global",
         "modulation_reduction": "sum",
         "parameter_scale_mode": "paper",
     }
@@ -1605,6 +1642,7 @@ def train_mapping(args: argparse.Namespace) -> None:
         parameter_scale_mode=args.parameter_scale_mode,
         layerwise_latent_dims=args.layerwise_latent_dims,
         layerwise_modulation_scales=args.layerwise_modulation_scales,
+        projection_layout=args.projection_layout,
     ).to(device)
 
     trainable_latent_params = model.trainable_latent_count()
@@ -1702,6 +1740,7 @@ def train_mapping(args: argparse.Namespace) -> None:
     print(f"dataset                  = {args.dataset}")
     print(f"target model             = {args.model}")
     print(f"mapping_mode             = {args.mapping_mode}")
+    print(f"projection_layout       = {args.projection_layout}")
     print(f"protocol                 = {args.protocol}")
     print(f"loss_mode                = {args.loss_mode}")
     if args.loss_mode == "full":
@@ -2089,6 +2128,16 @@ def build_arg_parser() -> argparse.ArgumentParser:
         choices=["orthogonal", "gaussian"],
         default="orthogonal",
         help="Paper mode uses fixed orthogonally initialized mapping weights",
+    )
+
+    parser.add_argument(
+        "--projection-layout",
+        choices=["global", "blockwise"],
+        default="global",
+        help=(
+            "global initializes one orthogonal mapping matrix; blockwise "
+            "reproduces the legacy independently initialized chunks"
+        ),
     )
 
     parser.add_argument(

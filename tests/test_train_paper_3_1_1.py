@@ -32,6 +32,42 @@ class PaperMappingProjectorTests(unittest.TestCase):
         torch.testing.assert_close(gram, torch.eye(3), atol=1e-5, rtol=1e-5)
         self.assertFalse(projector.cached_W.requires_grad)
 
+    def test_legacy_blockwise_projection_initializes_each_chunk_orthogonally(self) -> None:
+        projector = ChunkedFixedProjector(
+            latent_dim=3,
+            out_dim=8,
+            seed=42,
+            chunk_size=4,
+            activation="identity",
+            weight_scale=1.0,
+            modulation_scale=0.01,
+            latent_init_std=0.02,
+            projection_init="orthogonal",
+            modulation_reduction="mean",
+            projection_layout="blockwise",
+        )
+
+        expected = torch.eye(3)
+        for start in (0, 4):
+            block = projector.cached_W[:, start:start + 4]
+            torch.testing.assert_close(
+                block @ block.T,
+                expected,
+                atol=1e-5,
+                rtol=1e-5,
+            )
+
+        torch.testing.assert_close(
+            projector.cached_W @ projector.cached_W.T,
+            2.0 * expected,
+            atol=1e-5,
+            rtol=1e-5,
+        )
+        self.assertEqual(
+            float(projector.cached_W_frobenius_norm_sq),
+            6.0,
+        )
+
     def test_modulation_matches_expanded_paper_equation(self) -> None:
         projector = ChunkedFixedProjector(
             latent_dim=3,
@@ -288,6 +324,19 @@ class PaperMappingProjectorTests(unittest.TestCase):
         )
 
         with self.assertRaisesRegex(ValueError, "modulation-reduction sum"):
+            validate_paper_protocol(args)
+
+    def test_paper_protocol_rejects_legacy_blockwise_projection(self) -> None:
+        args = build_arg_parser().parse_args(
+            [
+                "--mode",
+                "mapping",
+                "--projection-layout",
+                "blockwise",
+            ]
+        )
+
+        with self.assertRaisesRegex(ValueError, "projection-layout global"):
             validate_paper_protocol(args)
 
     def test_paper_protocol_rejects_fixed_full_loss_coefficients(self) -> None:
