@@ -1,0 +1,9 @@
+{
+  "run_name": "20260706_164106_mapping_slvt_cnn2_mnist_z2048_seed42",
+  "best_epoch": 18,
+  "best_test_acc": 0.9808,
+  "paper_acc": 0.9866,
+  "gap_best_minus_paper": -0.005800000000000027,
+  "trainable_latent_params": 2048,
+  "target_param_count": 108618
+}

@@ -1,0 +1,9 @@
+{
+  "run_name": "20260706_170249_mapping_lwt_cnn2_mnist_z1872_seed42",
+  "best_epoch": 12,
+  "best_test_acc": 0.966,
+  "paper_acc": 0.9898,
+  "gap_best_minus_paper": -0.023800000000000043,
+  "trainable_latent_params": 1872,
+  "target_param_count": 108618
+}

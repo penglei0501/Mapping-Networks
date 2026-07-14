@@ -1,0 +1,73 @@
+{
+  "args": {
+    "dataset": "mnist",
+    "model": "projection-efficient-cnn",
+    "epochs": 5,
+    "batch_size": 256,
+    "num_workers": 2,
+    "lr": 0.01,
+    "hidden_dims": [
+      128,
+      128
+    ],
+    "latent_dim": 128,
+    "mapper_width": 128,
+    "mapper_depth": 3,
+    "train_mapper": false,
+    "layerwise": true,
+    "modulation_scale": 0.01,
+    "activation": "identity",
+    "projection_gain": 1.0,
+    "latent_init_std": 1.0,
+    "output_gain": 3.0,
+    "quick": true,
+    "no_progress": true,
+    "seed": 7,
+    "data_dir": "data",
+    "output": "results/latent_sweep/mnist_ld128_e5.json"
+  },
+  "device": "cuda",
+  "trainable_parameters": 640,
+  "target_parameters": 95194,
+  "initial_test_loss": 2.3745235204696655,
+  "initial_test_acc": 0.115234375,
+  "elapsed_seconds": 5.805921253999259,
+  "seconds_per_epoch": 1.1611842507998518,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.341586470603943,
+      "test_loss": 2.3118616938591003,
+      "test_acc": 0.09375,
+      "seconds": 1.2282176579992665
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.30470472574234,
+      "test_loss": 2.2976232767105103,
+      "test_acc": 0.1083984375,
+      "seconds": 1.0111767960006546
+    },
+    {
+      "epoch": 3,
+      "train_loss": 2.2895597517490387,
+      "test_loss": 2.285339832305908,
+      "test_acc": 0.1494140625,
+      "seconds": 1.438614556000175
+    },
+    {
+      "epoch": 4,
+      "train_loss": 2.2795488834381104,
+      "test_loss": 2.2731560468673706,
+      "test_acc": 0.1484375,
+      "seconds": 1.4210831349992077
+    },
+    {
+      "epoch": 5,
+      "train_loss": 2.2713109254837036,
+      "test_loss": 2.265493333339691,
+      "test_acc": 0.205078125,
+      "seconds": 0.706524728999284
+    }
+  ]
+}

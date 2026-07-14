@@ -1,0 +1,73 @@
+{
+  "args": {
+    "dataset": "mnist",
+    "model": "efficient-cnn",
+    "epochs": 5,
+    "batch_size": 256,
+    "num_workers": 2,
+    "lr": 0.001,
+    "hidden_dims": [
+      128,
+      128
+    ],
+    "latent_dim": 64,
+    "mapper_width": 128,
+    "mapper_depth": 3,
+    "train_mapper": false,
+    "layerwise": false,
+    "modulation_scale": 0.01,
+    "activation": "tanh",
+    "projection_gain": 1.0,
+    "latent_init_std": 1.0,
+    "output_gain": 1.0,
+    "quick": true,
+    "no_progress": false,
+    "seed": 7,
+    "data_dir": "data",
+    "output": "results/quick_efficient_cnn.json"
+  },
+  "device": "cuda",
+  "trainable_parameters": 95194,
+  "target_parameters": 95194,
+  "initial_test_loss": 2.3173882961273193,
+  "initial_test_acc": 0.0576171875,
+  "elapsed_seconds": 3.2757997089993296,
+  "seconds_per_epoch": 0.6551599417998659,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.259273111820221,
+      "test_loss": 2.1480462551116943,
+      "test_acc": 0.314453125,
+      "seconds": 0.9795322150002903
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.075626015663147,
+      "test_loss": 2.009105682373047,
+      "test_acc": 0.24609375,
+      "seconds": 0.5195639289995597
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.8977818936109543,
+      "test_loss": 1.8096752762794495,
+      "test_acc": 0.4130859375,
+      "seconds": 0.6451223050007684
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.743646040558815,
+      "test_loss": 1.6909672319889069,
+      "test_acc": 0.462890625,
+      "seconds": 0.5971925390003889
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.6236765384674072,
+      "test_loss": 1.6386998295783997,
+      "test_acc": 0.443359375,
+      "seconds": 0.5340763620006328
+    }
+  ]
+}

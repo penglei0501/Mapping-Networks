@@ -1,0 +1,7 @@
+{
+  "run_name": "20260714_194351_baseline_cnn1_fmnist_seed42",
+  "best_epoch": 18,
+  "best_test_acc": 0.9229,
+  "paper_acc": 0.9289,
+  "gap_best_minus_paper": -0.005999999999999894
+}

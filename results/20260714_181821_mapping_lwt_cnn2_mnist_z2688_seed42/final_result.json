@@ -1,0 +1,16 @@
+{
+  "run_name": "20260714_181821_mapping_lwt_cnn2_mnist_z2688_seed42",
+  "best_epoch": 15,
+  "best_test_acc": 0.9835,
+  "paper_acc": 0.9918,
+  "gap_best_minus_paper": -0.008299999999999974,
+  "trainable_latent_params": 2688,
+  "trainable_loss_coefficients": 3,
+  "total_optimized_params": 2691,
+  "final_mapping_loss_coefficients": {
+    "stability": 7.540612756429255e-08,
+    "smoothness": 6.50406031116324e-12,
+    "alignment": 7.335786644802056e-09
+  },
+  "target_param_count": 108618
+}

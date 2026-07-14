@@ -17,9 +17,7 @@ env/
 .idea/
 .vscode/
 
-# Downloaded datasets and generated results
-data/
-results/
+# Datasets and generated results are tracked for reproducibility.
 
 # Downloaded paper artifacts
 papers/
@@ -29,6 +27,12 @@ papers/
 *.pth
 *.ckpt
 *.onnx
+
+# Keep experiment checkpoints together with their result metadata.
+!results/**/*.pt
+!results/**/*.pth
+!results/**/*.ckpt
+!results/**/*.onnx
 
 # Logs
 *.log
