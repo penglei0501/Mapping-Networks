@@ -1,0 +1,22 @@
+{
+  "run_name": "20260715_172115_table8_slvt-prune_fmnist_p2048_seed42",
+  "variant": "slvt-prune",
+  "dataset": "fmnist",
+  "table_params": 2048,
+  "best_epoch": 9,
+  "best_test_acc": 0.8065,
+  "paper_acc": 0.887,
+  "gap_best_minus_paper": -0.08050000000000002,
+  "dense_test_acc": 0.8536,
+  "initial_pruned_test_acc": 0.1004,
+  "effective_nonzero_target_params": 10862,
+  "trainable_model_params": 2048,
+  "stored_model_params": 2048,
+  "trainable_loss_coefficients": 0,
+  "total_optimized_params": 2048,
+  "final_mapping_loss_coefficients": null,
+  "layerwise_dims": null,
+  "lrd_rank": null,
+  "paper_prose_rank": null,
+  "implementation_note": "tensor-scope post-training magnitude pruning over weights and biases; keep exactly 10,862 of 108,618 generated/target parameters. Optional fine-tuning keeps the mask fixed and blocks gradients for pruned entries."
+}

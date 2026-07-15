@@ -1,0 +1,20 @@
+{
+  "run_name": "20260715_150913_table7_full-dnn_mnist_p6753104_seed42",
+  "variant": "full-dnn",
+  "dataset": "mnist",
+  "table_params": 6753104,
+  "best_epoch": 6,
+  "best_test_acc": 0.9912,
+  "paper_acc": 0.9712,
+  "gap_best_minus_paper": 0.020000000000000018,
+  "trainable_model_params": 6753104,
+  "trainable_loss_coefficients": 3,
+  "total_optimized_params": 6753107,
+  "target_param_count": 108618,
+  "final_mapping_loss_coefficients": {
+    "stability": 0.0014364559901878238,
+    "smoothness": 2.1537525540793467e-08,
+    "alignment": 0.022966546937823296
+  },
+  "implementation_note": "Paper says the latent is fixed and mapping weights are trainable, but does not disclose the Full DNN architecture."
+}

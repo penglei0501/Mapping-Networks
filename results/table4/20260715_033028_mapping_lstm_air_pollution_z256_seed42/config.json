@@ -1,0 +1,71 @@
+{
+  "mode": "mapping",
+  "data_file": "data/beijing_multi_site_air_quality/air_pollution_sequences.npz",
+  "output_dir": "results/table4",
+  "input_size": 67,
+  "hidden_size": 32,
+  "latent_dim": 256,
+  "epochs": 20,
+  "batch_size": 128,
+  "lr": 0.001,
+  "weight_decay": 0.0,
+  "grad_clip": 1.0,
+  "seed": 42,
+  "device": "cuda",
+  "num_workers": 0,
+  "max_train_batches": null,
+  "max_test_batches": null,
+  "projection_init": "orthogonal",
+  "projection_layout": "global",
+  "activation": "identity",
+  "modulation_reduction": "sum",
+  "parameter_scale_mode": "paper",
+  "weight_scale": 1.0,
+  "modulation_scale": 0.01,
+  "latent_init_std": 0.02,
+  "chunk_size": 4096,
+  "loss_mode": "full",
+  "mapping_loss_terms": [
+    "stability",
+    "smoothness",
+    "alignment"
+  ],
+  "loss_coefficient_mode": "trainable",
+  "lambda_stability": 0.05,
+  "lambda_smoothness": 5e-06,
+  "lambda_alignment": 0.05,
+  "stability_sigma": 0.01,
+  "run_name": "20260715_033028_mapping_lstm_air_pollution_z256_seed42",
+  "device_resolved": "cuda",
+  "paper_mse": 0.00093,
+  "target_param_count": 12961,
+  "trainable_model_params": 256,
+  "data": {
+    "data_file": "/home/penglei/projects/Mapping-Networks/data/beijing_multi_site_air_quality/air_pollution_sequences.npz",
+    "x_train_shape": [
+      27209,
+      24,
+      67
+    ],
+    "y_train_shape": [
+      27209
+    ],
+    "x_test_shape": [
+      6906,
+      24,
+      67
+    ],
+    "y_test_shape": [
+      6906
+    ]
+  },
+  "architecture_evidence": "input_size=67 and hidden_size=32 are uniquely inferred from the paper's 12,961 parameter count under a one-layer LSTM plus scalar head",
+  "paper_undisclosed": [
+    "dataset file or URL",
+    "feature construction",
+    "sequence length",
+    "train/test split",
+    "normalization",
+    "optimizer and training hyperparameters"
+  ]
+}

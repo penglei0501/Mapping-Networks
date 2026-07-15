@@ -1,0 +1,11 @@
+{
+  "run_name": "20260715_030835_baseline_lstm_air_pollution_seed42",
+  "best_epoch": 19,
+  "best_test_mse": 0.00029778483992239123,
+  "paper_mse": 0.0035,
+  "gap_best_minus_paper": -0.0032022151600776087,
+  "trainable_model_params": 12961,
+  "trainable_loss_coefficients": 0,
+  "target_param_count": 12961,
+  "final_mapping_loss_coefficients": null
+}

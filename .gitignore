@@ -17,7 +17,8 @@ env/
 .idea/
 .vscode/
 
-# Datasets and generated results are tracked for reproducibility.
+# Local datasets stay out of Git; generated results remain tracked for reproducibility.
+data/
 
 # Downloaded paper artifacts
 papers/

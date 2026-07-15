@@ -1,0 +1,15 @@
+{
+  "run_name": "20260715_034452_mapping_lstm_air_pollution_z512_seed42",
+  "best_epoch": 19,
+  "best_test_mse": 0.0014417452250585466,
+  "paper_mse": 0.0008,
+  "gap_best_minus_paper": 0.0006417452250585465,
+  "trainable_model_params": 512,
+  "trainable_loss_coefficients": 3,
+  "target_param_count": 12961,
+  "final_mapping_loss_coefficients": {
+    "stability": 0.005160290747880936,
+    "smoothness": 3.8714094330316584e-07,
+    "alignment": 0.0049409582279622555
+  }
+}

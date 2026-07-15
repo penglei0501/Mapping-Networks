@@ -1,0 +1,1 @@
+{"finetune_epoch": 1, "train_loss": 0.6281481574376424, "train_acc": 0.7923833333333333, "test_loss": 0.40322713351249695, "test_acc": 0.8644, "best_test_acc": 0.8644, "best_epoch": 1, "effective_nonzero_target_params": 10862, "seconds": 7.489275217056274}

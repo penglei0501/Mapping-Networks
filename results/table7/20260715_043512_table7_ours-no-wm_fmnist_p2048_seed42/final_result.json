@@ -1,0 +1,20 @@
+{
+  "run_name": "20260715_043512_table7_ours-no-wm_fmnist_p2048_seed42",
+  "variant": "ours-no-wm",
+  "dataset": "fmnist",
+  "table_params": 2048,
+  "best_epoch": 19,
+  "best_test_acc": 0.8643,
+  "paper_acc": 0.8766,
+  "gap_best_minus_paper": -0.012300000000000089,
+  "trainable_model_params": 2048,
+  "trainable_loss_coefficients": 3,
+  "total_optimized_params": 2051,
+  "target_param_count": 108618,
+  "final_mapping_loss_coefficients": {
+    "stability": 7.721054089415702e-07,
+    "smoothness": 6.305953537122377e-10,
+    "alignment": 2.7487831175676547e-06
+  },
+  "implementation_note": "Train z with fixed orthogonal mapping weights and alpha=0."
+}

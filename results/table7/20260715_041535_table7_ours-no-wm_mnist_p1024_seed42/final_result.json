@@ -1,0 +1,20 @@
+{
+  "run_name": "20260715_041535_table7_ours-no-wm_mnist_p1024_seed42",
+  "variant": "ours-no-wm",
+  "dataset": "mnist",
+  "table_params": 1024,
+  "best_epoch": 17,
+  "best_test_acc": 0.9751,
+  "paper_acc": 0.9562,
+  "gap_best_minus_paper": 0.018899999999999917,
+  "trainable_model_params": 1024,
+  "trainable_loss_coefficients": 3,
+  "total_optimized_params": 1027,
+  "target_param_count": 108618,
+  "final_mapping_loss_coefficients": {
+    "stability": 6.66474164745523e-08,
+    "smoothness": 6.307253053172701e-10,
+    "alignment": 2.1124596969457343e-06
+  },
+  "implementation_note": "Train z with fixed orthogonal mapping weights and alpha=0."
+}

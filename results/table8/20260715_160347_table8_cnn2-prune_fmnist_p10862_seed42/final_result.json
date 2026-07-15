@@ -1,0 +1,22 @@
+{
+  "run_name": "20260715_160347_table8_cnn2-prune_fmnist_p10862_seed42",
+  "variant": "cnn2-prune",
+  "dataset": "fmnist",
+  "table_params": 10862,
+  "best_epoch": 1,
+  "best_test_acc": 0.8644,
+  "paper_acc": 0.8791,
+  "gap_best_minus_paper": -0.014700000000000046,
+  "dense_test_acc": 0.9119,
+  "initial_pruned_test_acc": 0.5198,
+  "effective_nonzero_target_params": 10862,
+  "trainable_model_params": 10862,
+  "stored_model_params": 108618,
+  "trainable_loss_coefficients": 0,
+  "total_optimized_params": 10862,
+  "final_mapping_loss_coefficients": null,
+  "layerwise_dims": null,
+  "lrd_rank": null,
+  "paper_prose_rank": null,
+  "implementation_note": "Global post-training magnitude pruning over weights and biases; keep exactly 10,862 of 108,618 generated/target parameters. Optional fine-tuning keeps the mask fixed and blocks gradients for pruned entries."
+}

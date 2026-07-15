@@ -1,0 +1,20 @@
+{
+  "run_name": "20260715_150030_table7_lv-full-dnn_fmnist_p1629285_seed42",
+  "variant": "lv-full-dnn",
+  "dataset": "fmnist",
+  "table_params": 1629285,
+  "best_epoch": 15,
+  "best_test_acc": 0.903,
+  "paper_acc": 0.9067,
+  "gap_best_minus_paper": -0.0036999999999999256,
+  "trainable_model_params": 1629285,
+  "trainable_loss_coefficients": 3,
+  "total_optimized_params": 1629288,
+  "target_param_count": 108618,
+  "final_mapping_loss_coefficients": {
+    "stability": 7.078106136759743e-07,
+    "smoothness": 1.7161078114114048e-10,
+    "alignment": 4.1928287828341126e-05
+  },
+  "implementation_note": "Train z and a bias-free dense mapping matrix; d*108618+d exactly matches the two reported parameter counts."
+}

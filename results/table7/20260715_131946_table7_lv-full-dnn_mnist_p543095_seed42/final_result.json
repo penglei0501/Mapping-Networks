@@ -1,0 +1,20 @@
+{
+  "run_name": "20260715_131946_table7_lv-full-dnn_mnist_p543095_seed42",
+  "variant": "lv-full-dnn",
+  "dataset": "mnist",
+  "table_params": 543095,
+  "best_epoch": 15,
+  "best_test_acc": 0.9921,
+  "paper_acc": 0.9616,
+  "gap_best_minus_paper": 0.03049999999999997,
+  "trainable_model_params": 543095,
+  "trainable_loss_coefficients": 3,
+  "total_optimized_params": 543098,
+  "target_param_count": 108618,
+  "final_mapping_loss_coefficients": {
+    "stability": 4.1199936617886124e-07,
+    "smoothness": 2.4523522101915773e-10,
+    "alignment": 6.155556911835447e-05
+  },
+  "implementation_note": "Train z and a bias-free dense mapping matrix; d*108618+d exactly matches the two reported parameter counts."
+}

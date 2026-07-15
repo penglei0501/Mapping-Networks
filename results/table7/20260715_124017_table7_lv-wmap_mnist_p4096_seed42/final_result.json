@@ -1,0 +1,20 @@
+{
+  "run_name": "20260715_124017_table7_lv-wmap_mnist_p4096_seed42",
+  "variant": "lv-wmap",
+  "dataset": "mnist",
+  "table_params": 4096,
+  "best_epoch": 17,
+  "best_test_acc": 0.9818,
+  "paper_acc": 0.9848,
+  "gap_best_minus_paper": -0.0030000000000000027,
+  "trainable_model_params": 4096,
+  "trainable_loss_coefficients": 3,
+  "total_optimized_params": 4099,
+  "target_param_count": 108618,
+  "final_mapping_loss_coefficients": {
+    "stability": 7.855143167034839e-07,
+    "smoothness": 6.30602625673049e-10,
+    "alignment": 7.609666499774903e-05
+  },
+  "implementation_note": "Infer equal-length trainable z and independent modulation vector m from the reported total parameter budget."
+}

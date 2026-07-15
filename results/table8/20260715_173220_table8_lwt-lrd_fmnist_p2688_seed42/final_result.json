@@ -1,0 +1,31 @@
+{
+  "run_name": "20260715_173220_table8_lwt-lrd_fmnist_p2688_seed42",
+  "variant": "lwt-lrd",
+  "dataset": "fmnist",
+  "table_params": 2688,
+  "best_epoch": 5,
+  "best_test_acc": 0.8571,
+  "paper_acc": 0.9355,
+  "gap_best_minus_paper": -0.07840000000000003,
+  "dense_test_acc": 0.8571,
+  "initial_pruned_test_acc": null,
+  "effective_nonzero_target_params": 35914,
+  "trainable_model_params": 2688,
+  "stored_model_params": 2688,
+  "trainable_loss_coefficients": 3,
+  "total_optimized_params": 2691,
+  "final_mapping_loss_coefficients": {
+    "stability": 3.332681080792099e-05,
+    "smoothness": 7.20462400849442e-09,
+    "alignment": 7.88307352195261e-06
+  },
+  "layerwise_dims": {
+    "conv1": 268,
+    "conv2": 622,
+    "fc1": 1347,
+    "fc2": 451
+  },
+  "lrd_rank": 32,
+  "paper_prose_rank": 16,
+  "implementation_note": "Paper prose says rank 16, but 35,914 parameters exactly imply rank 32 when only CNN2 FC1 is factorized."
+}
